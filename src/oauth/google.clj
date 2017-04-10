@@ -12,8 +12,8 @@
   "https://accounts.google.com/o/oauth2/auth")
 
 (def ^:dynamic *oauth-scopes*
-  {:email "https://www.googleapis.com/auth/userinfo.email"
-   :profile "https://www.googleapis.com/auth/userinfo.profile"})
+  {:email "https://www.googleapis.com/auth/gmail.readonly"
+   :profile "https://www.googleapis.com/auth/plus.profile.emails.read"})
 
 (def ^:dynamic *oauth-authorization-defaults*
   {:access-type "offline"

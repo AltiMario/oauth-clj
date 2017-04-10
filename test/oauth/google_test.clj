@@ -9,16 +9,16 @@
   "")
 
 (def google-client-id
-  "173176451919.apps.googleusercontent.com")
+  "972225781500-hbsejaff61f4cdas93062pvngqp8u96n.apps.googleusercontent.com")
 
 (def google-client-secret
-  "rd6_3jrt7dXgF8Ww_eJdxdrp")
+  "8JRUOJl7SBeT1deDSnrw8lmh")
 
 (def google-redirect-uri
-  "https://localhost/oauth2callback")
+  "http://localhost:3000/v1/gmailservice/oauth2callback")
 
 (def google-code
-  "4/ZgIhztcK_dX3ULsXXBzlGl-f-RX0.MlILSu3vraUdOl05ti8ZT3a5grtycgI")
+  "4/MVogHpUYAeJFtLD6GKXWkboB4jFpAazmuPp6i2K0Gw0#")
 
 (deftest test-user-info
   (user-info
@@ -46,7 +46,7 @@
     (is (= :https (:scheme url)))
     (is (= "accounts.google.com" (:server-name url)))
     (is (= "/o/oauth2/auth" (:uri url)))
-    (is (= {:scope "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile"
+    (is (= {:scope "https://www.googleapis.com/auth/gmail.readonly https://www.googleapis.com/auth/userinfo.profile"
             :response_type "code"
             :access_type "offline"
             :client_id "173176451919.apps.googleusercontent.com"
@@ -74,7 +74,7 @@
          (scopes :email :profile))))
 
 (comment
-  (println (oauth-authorization-url google-client-id google-redirect-uri :scope (scopes :email)))
+  (browse-url (oauth-authorization-url google-client-id google-redirect-uri))
   (def google-access-token nil)
   (alter-var-root
    #'google-access-token
